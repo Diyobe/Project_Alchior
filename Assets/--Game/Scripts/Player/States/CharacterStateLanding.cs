@@ -26,8 +26,10 @@ public class CharacterStateLanding : CharacterState
 
 	public override void StartState(CharacterBase character, CharacterState oldState)
 	{
-		character.Movement.animator.SetTrigger("Crouch");
-		maxLandingTime = landingTime / 60f;
+		character.Movement.isJumping = false;
+		character.canLand = false;
+		character.Movement.animator.SetTrigger("Landing");
+        maxLandingTime = landingTime / 60f;
 		currentLandingTime = 0f;
 
 		//ParticleSystem particle = landParticleSystem ? Instantiate(landParticleSystem, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);

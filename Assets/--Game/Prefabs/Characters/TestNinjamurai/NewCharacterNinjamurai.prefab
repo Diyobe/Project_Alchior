@@ -879,7 +879,7 @@ MonoBehaviour:
   dashState: {fileID: 0}
   aerialState: {fileID: 4834194079233470166}
   wallRunState: {fileID: 0}
-  jumpStartState: {fileID: 4802828471458781723}
+  jumpStartState: {fileID: 4834194079233470166}
   turnAroundState: {fileID: 0}
 --- !u!1 &2350648713395394624
 GameObject:
@@ -1546,6 +1546,7 @@ MonoBehaviour:
   movement: {fileID: 3572355416432021228}
   stats: {fileID: 0}
   characterIcon: {fileID: 0}
+  canLand: 1
 --- !u!1 &3952135926651406800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,7 +1961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpState: {fileID: 4834194079233470166}
-  crouchTime: 0.5
+  crouchTime: 0
 --- !u!1 &4785997968528372474
 GameObject:
   m_ObjectHideFlags: 0

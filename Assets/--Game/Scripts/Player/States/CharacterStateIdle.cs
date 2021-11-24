@@ -19,16 +19,12 @@ public class CharacterStateIdle : CharacterState
 
 	public override void StartState(CharacterBase character, CharacterState oldState)
 	{
-		character.Movement.animator.SetTrigger("Landing");
 		character.Movement.animator.SetBool("IsGrounded", true);
 	}
 
 	public override void UpdateState(CharacterBase character)
 	{
-        if (!character.Rigidbody.IsGrounded())
-        {
-			character.SetState(aerialState);
-        }
+		if (GameManager.Instance.gamePaused) return;
 
 		character.Movement.HandleGravity();
 		character.Movement.HandleMovement(character.inputPlayer.GetAxis("MoveX"), character.inputPlayer.GetAxis("MoveZ"));
@@ -43,9 +39,16 @@ public class CharacterStateIdle : CharacterState
 
         if (character.inputPlayer.GetButtonDown("Jump"))
         {
-            character.SetState(jumpStartState);
-        }
-    }
+			character.canLand = false;
+			character.Movement.Jump();
+			character.SetState(jumpStartState);
+		}
+
+		if (!character.Rigidbody.IsGrounded())
+		{
+			character.SetState(aerialState);
+		}
+	}
 	
 	public override void LateUpdateState(CharacterBase character)
 	{

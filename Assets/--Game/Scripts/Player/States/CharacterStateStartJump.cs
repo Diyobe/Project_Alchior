@@ -19,18 +19,20 @@ public class CharacterStateStartJump : CharacterState
 
     public override void StartState(CharacterBase character, CharacterState oldState)
     {
+        //character.Movement.animator.SetTrigger("Crouch");
         maxCrouchTime = crouchTime / 60f;
         currentCrouchTime = 0f;
     }
 
     public override void UpdateState(CharacterBase character)
     {
-        currentCrouchTime += Time.deltaTime;
-        if (currentCrouchTime >= maxCrouchTime)
-        {
+        //currentCrouchTime += Time.deltaTime;
             character.Movement.Jump();
+            character.Movement.animator.SetTrigger("Jumping");
             character.SetState(jumpState);
-        }
+        //if (currentCrouchTime >= maxCrouchTime)
+        //{
+        //}
     }
 
     public override void LateUpdateState(CharacterBase character)

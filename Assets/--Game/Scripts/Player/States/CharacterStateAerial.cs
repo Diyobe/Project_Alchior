@@ -12,6 +12,7 @@ public class CharacterStateAerial : CharacterState
     public override void StartState(CharacterBase character, CharacterState oldState)
     {
         character.Movement.animator.SetBool("IsGrounded", false);
+        StartCoroutine(StartCanLand(character));
     }
 
     public override void UpdateState(CharacterBase character)
@@ -21,7 +22,7 @@ public class CharacterStateAerial : CharacterState
 
     public override void LateUpdateState(CharacterBase character)
     {
-        if (character.Rigidbody.IsGrounded())
+        if (character.Rigidbody.IsGrounded() && character.canLand)
         {
             character.Movement.isJumping = false;
             character.SetState(landingState);
@@ -32,5 +33,11 @@ public class CharacterStateAerial : CharacterState
     public override void EndState(CharacterBase character, CharacterState newState)
     {
 
+    }
+
+    IEnumerator StartCanLand(CharacterBase character)
+    {
+        yield return new WaitForSeconds(0.01f);
+        character.canLand = true;
     }
 }

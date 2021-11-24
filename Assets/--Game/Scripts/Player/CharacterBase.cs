@@ -74,6 +74,7 @@ public class CharacterBase : MonoBehaviour
 
 
 	public Player inputPlayer;
+	public bool canLand = true;
 
 	public delegate void ActionSetState(CharacterState oldState, CharacterState newState);
 	public event ActionSetState OnStateChanged;
