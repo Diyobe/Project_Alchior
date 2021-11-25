@@ -6,11 +6,9 @@ public class PlayerMainActions : MonoBehaviour
 {
     [SerializeField] InteractableDetector interactableDetector;
 
-    public bool isInMenu = false;
-
     public void Interact()
     {
-        if (isInMenu) return;
+        if (GameManager.Instance.gamePaused) return;
 
         if(interactableDetector.targetInteractable != null)
         {

@@ -17,6 +17,7 @@ public class CharacterStateIdle : CharacterState
 	[SerializeField]
 	CharacterState turnAroundState;
 
+
 	public override void StartState(CharacterBase character, CharacterState oldState)
 	{
 		character.Movement.animator.SetBool("IsGrounded", true);
@@ -36,6 +37,11 @@ public class CharacterStateIdle : CharacterState
 
 		float currentSpeed = Mathf.Clamp(newVector.magnitude * 2, 0, character.Movement.runningSpeed) / character.Movement.runningSpeed;
 		character.Movement.animator.SetFloat("IdleMovement", currentSpeed);
+
+        if (character.inputPlayer.GetButtonDown("Interact"))
+        {
+			character.actions.Interact();
+        }
 
         if (character.inputPlayer.GetButtonDown("Jump"))
         {

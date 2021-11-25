@@ -72,6 +72,7 @@ public class CharacterBase : MonoBehaviour
 		get { return characterIcon; }
 	}
 
+	public PlayerMainActions actions;
 
 	public Player inputPlayer;
 	public bool canLand = true;

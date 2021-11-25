@@ -741,6 +741,50 @@ Transform:
   m_Father: {fileID: 2809775492952291714}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0.0000015853514, y: 0.0000064102273, z: 0.0000035670405}
+--- !u!1 &1948657926826669362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6574793963286093072}
+  - component: {fileID: 1174070137414042928}
+  m_Layer: 0
+  m_Name: CharacterActions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6574793963286093072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948657926826669362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4768551977826468493}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1174070137414042928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948657926826669362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6caa3905fe67e14e81346ac32cdbd59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableDetector: {fileID: 437388415544217140}
 --- !u!1 &2022660694969347692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1533,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableDetector: {fileID: 437388415544217140}
-  isInMenu: 0
 --- !u!143 &3640510885815018635
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1546,6 +1589,7 @@ MonoBehaviour:
   movement: {fileID: 3572355416432021228}
   stats: {fileID: 0}
   characterIcon: {fileID: 0}
+  actions: {fileID: 1174070137414042928}
   canLand: 1
 --- !u!1 &3952135926651406800
 GameObject:
@@ -2863,6 +2907,7 @@ Transform:
   - {fileID: 2545358189370300749}
   - {fileID: 1582461488220600420}
   - {fileID: 6157169661428613172}
+  - {fileID: 6574793963286093072}
   m_Father: {fileID: 3952135926525896204}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3070,7 +3115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1582461488220600420
 Transform:
   m_ObjectHideFlags: 0
