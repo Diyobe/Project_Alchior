@@ -60,7 +60,10 @@ public class PauseManager : MonoBehaviour
         {
             if (_mainPlayer.GetButtonDown("Pause"))
             {
-                ClosePause();
+                if (currentState == State.PAUSE)
+                {
+                    ClosePause();
+                }
             }
 
             if (_mainPlayer.GetButtonDown("MenuCancel"))
