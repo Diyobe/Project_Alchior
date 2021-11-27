@@ -25,7 +25,6 @@ public class CharacterStateIdle : CharacterState
 
 	public override void UpdateState(CharacterBase character)
 	{
-		if (GameManager.Instance.gamePaused) return;
 
 		character.Movement.HandleGravity();
 		character.Movement.HandleMovement(character.inputPlayer.GetAxis("MoveX"), character.inputPlayer.GetAxis("MoveZ"));

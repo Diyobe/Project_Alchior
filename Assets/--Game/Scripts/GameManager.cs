@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,14 +41,25 @@ public class GameManager : MonoBehaviour
     public bool gamePlaying = false;
     public bool gamePaused = false;
     public bool isInCutscene = false;
+    public bool popUpOpened = false;
+    CinemachineFreeLook cameraFreelook;
 
     private void Start()
     {
+        cameraFreelook = FindObjectOfType<CinemachineFreeLook>();
         StartGame();
     }
 
     public void StartGame()
     {
         gamePlaying = true;
+    }
+
+    public void CameraFocusAndFollowTarget(GameObject target)
+    {
+        if (target == null) return;
+        if (cameraFreelook == null) return;
+        cameraFreelook.LookAt = target.transform;
+        cameraFreelook.Follow = target.transform;
     }
 }

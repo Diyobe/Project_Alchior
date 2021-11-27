@@ -30,7 +30,12 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.Instance.gamePlaying || !GameManager.Instance.gamePaused || inventoryUIElements.Count <= 0) return;
+        if (!GameManager.Instance.gamePlaying || !GameManager.Instance.gamePaused || GameManager.Instance.isInCutscene || GameManager.Instance.popUpOpened || inventoryUIElements.Count <= 0) return;
+
+        if (inputPlayer.GetButtonDown("MenuValidate"))
+        {
+            inventoryUIElements[cursorNumber].currentInventoryItem.Item.Use();
+        }
 
         if (inputPlayer.GetAxis("MenuMoveAxisY") > 0.5f && !joystickVerticalPushed)
         {

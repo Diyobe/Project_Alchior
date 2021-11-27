@@ -22,6 +22,13 @@ public class CharacterBase : MonoBehaviour
 		get { return currentState; }
 	}
 
+	[SerializeField]
+	private string characterName;
+	public string CharacterName
+	{
+		get { return characterName; }
+	}
+
 	[Title("Model")]
 	[SerializeField]
 	private Transform centerPoint;
@@ -102,6 +109,7 @@ public class CharacterBase : MonoBehaviour
 
     private void Update()
 	{
+		if (GameManager.Instance.gamePaused ||GameManager.Instance.isInCutscene || GameManager.Instance.popUpOpened) return;
 		currentState.UpdateState(this);
 		currentState.LateUpdateState(this);
 

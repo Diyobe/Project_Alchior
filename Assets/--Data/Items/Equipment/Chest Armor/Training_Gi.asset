@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48eaeea46906d6243b92fc94303d561a, type: 3}
+  m_Name: Training_Gi
+  m_EditorClassIdentifier: 
+  name: Training gi
+  icon: {fileID: 21300000, guid: 6fd0c242a45d6472cb3533e9f7dbf179, type: 3}
+  isDefaultItem: 0
+  isStackable: 0
+  description: A training gi used by martial artists
+  equipmentType: 1
+  user: 0
+  maxHealthPointsModifier: 0
+  maxThermaPointsModifier: 0
+  maxStaminaModifier: 0
+  attackModifier: 0
+  specialAttackModifier: 0
+  defenseModifier: 0
+  specialDefenseModifier: 0
+  speedModifier: 0
+  pyrosResistanceModifier: 0
+  NaturaResistanceModifier: 0
+  TerraResistanceModifier: 0
+  ElectraResistanceModifier: 0
+  AerosResistanceModifier: 0
+  HydrosResistanceModifier: 0
+  criticalRateModifier: 0
+  experienceGainMultiplier: 1

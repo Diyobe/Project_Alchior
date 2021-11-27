@@ -6,11 +6,13 @@ using TMPro;
 
 public class InventoryUIElement : MonoBehaviour
 {
-    InventoryItem currentInventoryItem;
+    [HideInInspector]
+    public InventoryItem currentInventoryItem;
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI elementNameText;
     [SerializeField] TextMeshProUGUI elementQuantityText;
     Animator animator;
+    [SerializeField] UIPopUp itemUsePopUp;
 
     private void Awake()
     {

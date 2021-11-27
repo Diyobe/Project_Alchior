@@ -1587,7 +1587,7 @@ MonoBehaviour:
   model: {fileID: 0}
   rigidbody: {fileID: 8325594827556253420}
   movement: {fileID: 3572355416432021228}
-  stats: {fileID: 0}
+  stats: {fileID: 1021658162688449289}
   characterIcon: {fileID: 0}
   actions: {fileID: 1174070137414042928}
   canLand: 1
@@ -2954,6 +2954,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b2acea05327464baf830120d715864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthPoints: 500
+  currentHP: 0
+  maxThermaPoints: 100
+  currentTH: 0
+  attack: 10
+  specialAttack: 10
+  defense: 10
+  specialDefense: 10
+  level: 1
+  maxExperience: 3000
+  stamina: 100
+  criticalRate: 15
+  pyrosResistance: 0
+  naturaResistance: 0
+  terraResistance: 0
+  electraResistance: 0
+  aerosResistance: 0
+  hydrosResistance: 0
+  weaponType: 6
+  weapon: {fileID: 11400000, guid: a5537d97c9619874180553ff82556891, type: 2}
+  chestEquipment: {fileID: 11400000, guid: d78c7407ab4ff7f47a3cdbcd0a466c92, type: 2}
+  legsEquipment: {fileID: 11400000, guid: 0c2659064ba77744ca3b22d67152321d, type: 2}
+  firstAccessory: {fileID: 0}
+  secondAccessory: {fileID: 0}
 --- !u!1 &6631638973218397715
 GameObject:
   m_ObjectHideFlags: 0
