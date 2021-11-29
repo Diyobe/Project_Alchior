@@ -4726,8 +4726,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.073698774, y: 0.0000000113525225, z: -8.3894813e-10, w: 0.99728054}
-  m_LocalPosition: {x: -0.000000010055693, y: 9.652618, z: -14.164804}
+  m_LocalRotation: {x: 0.073698774, y: 3.7297283e-37, z: -3.748211e-38, w: 0.99728054}
+  m_LocalPosition: {x: -1.05428e-30, y: 9.652618, z: -14.164804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5944,7 +5944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa46dc9f98e52a4eab84c9699b68bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 0c7907a2acee05846af2116787bc458b, type: 2}
+  item: {fileID: 11400000, guid: adab30413af38934fb5e368c1ce5e922, type: 2}
   quantity: 1
 --- !u!65 &1343284835
 BoxCollider:
@@ -6316,7 +6316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa46dc9f98e52a4eab84c9699b68bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 837d265100ebad24e9886d41d1cf014f, type: 2}
+  item: {fileID: 11400000, guid: 4ebaa50acdc34684cab181ed90cdfd9a, type: 2}
   quantity: 1
 --- !u!65 &1450154995
 BoxCollider:
@@ -7177,7 +7177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa46dc9f98e52a4eab84c9699b68bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9fa27074e049c4a40974798279f5b328, type: 2}
+  item: {fileID: 11400000, guid: 8ea1dea6f1150e14bb4a030d8ec734ea, type: 2}
   quantity: 1
 --- !u!65 &1761488945
 BoxCollider:
@@ -8704,11 +8704,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5030824312566085392, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 1.717412
+      value: 2.071299
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312566085392, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.648987
+      value: -7.840792
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312579998823, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8720,19 +8720,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312579998823, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000113525225
+      value: 3.7297283e-37
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312579998823, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -8.3894813e-10
+      value: -3.748211e-38
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312747774552, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 1.717412
+      value: 2.071299
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312747774552, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.648987
+      value: -7.840792
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312847531319, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8740,35 +8740,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312847531319, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6474123
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312847531319, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.448987
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312847531319, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9939085
+      value: 0.9972806
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312847531319, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11020829
+      value: 0.07369877
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312847531319, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000029432758
+      value: -4.329752e-22
       objectReference: {fileID: 0}
     - target: {fileID: 5030824312847531319, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.2636144e-10
+      value: 8.529153e-23
       objectReference: {fileID: 0}
     - target: {fileID: 5030824313001855105, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 1.717412
+      value: 2.071299
       objectReference: {fileID: 0}
     - target: {fileID: 5030824313001855105, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -7.648987
+      value: -7.840792
       objectReference: {fileID: 0}
     - target: {fileID: 5030824313191774859, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8780,11 +8780,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5030824313191774859, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000021319245
+      value: -2.6802055e-30
       objectReference: {fileID: 0}
     - target: {fileID: 5030824313191774859, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000015754864
+      value: 1.3229441e-31
       objectReference: {fileID: 0}
     - target: {fileID: 5030824313233922017, guid: 2920760fc6bf8144282a2b744ceebb28, type: 3}
       propertyPath: m_RootOrder
@@ -8960,7 +8960,7 @@ GameObject:
   - component: {fileID: 6151908762811205701}
   - component: {fileID: 6151908762811205700}
   m_Layer: 0
-  m_Name: Pickup_katana
+  m_Name: Pickup_ninjato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

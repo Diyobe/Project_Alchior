@@ -104,8 +104,12 @@ public class Inventory : MonoBehaviour
             else
             {
                 Debug.Log(item.name + " x" + quantityToAdd + " added to inventory.");
-                InventoryItem newInventoryItem = new InventoryItem(item, quantityToAdd);
-                inventoryItems.Add(newInventoryItem);
+                for (int i = 0; i < quantityToAdd; i++)
+                {
+
+                    InventoryItem newInventoryItem = new InventoryItem(item, 1);
+                    inventoryItems.Add(newInventoryItem);
+                }
             }
             onItemChangedCallback?.Invoke();
         }

@@ -99,54 +99,51 @@ public class PartyManager : MonoBehaviour
             else
                 Debug.LogError("Can't equip this type of weapon to this character");
         }
-        else
+        else if (equipment is ChestEquipment chest)
         {
-            if (equipment.equipmentType == EquipmentType.CHEST)
+            if (character.chestEquipment != null)
             {
-                if (character.chestEquipment != null)
-                {
-                    oldEquipment = character.chestEquipment;
-                    Inventory.Instance.Add(character.chestEquipment);
-                }
-
-                character.chestEquipment = equipment;
-                Inventory.Instance.Remove(equipment);
+                oldEquipment = character.chestEquipment;
+                Inventory.Instance.Add(character.chestEquipment);
             }
-            else if (equipment.equipmentType == EquipmentType.LEGS)
+
+            character.chestEquipment = chest;
+            Inventory.Instance.Remove(chest);
+        }
+        else if (equipment is LegsEquipment legs)
+        {
+            if (character.legsEquipment != null)
             {
-                if (character.legsEquipment != null)
+                oldEquipment = character.legsEquipment;
+                Inventory.Instance.Add(character.legsEquipment);
+            }
+
+            character.legsEquipment = legs;
+            Inventory.Instance.Remove(legs);
+        }
+        else if(equipment is AccessoryEquipment accessory)
+        {
+            if (isFirstAccessory)
+            {
+                if (character.firstAccessory != null)
                 {
-                    oldEquipment = character.legsEquipment;
-                    Inventory.Instance.Add(character.legsEquipment);
+                    oldEquipment = character.firstAccessory;
+                    Inventory.Instance.Add(character.firstAccessory);
                 }
 
-                character.legsEquipment = equipment;
-                Inventory.Instance.Remove(equipment);
+                character.firstAccessory = accessory;
+                Inventory.Instance.Remove(accessory);
             }
             else
             {
-                if (isFirstAccessory)
+                if (character.secondAccessory != null)
                 {
-                    if (character.firstAccessory != null)
-                    {
-                        oldEquipment = character.firstAccessory;
-                        Inventory.Instance.Add(character.firstAccessory);
-                    }
-
-                    character.firstAccessory = equipment;
-                    Inventory.Instance.Remove(equipment);
+                    oldEquipment = character.secondAccessory;
+                    Inventory.Instance.Add(character.secondAccessory);
                 }
-                else
-                {
-                    if (character.secondAccessory != null)
-                    {
-                        oldEquipment = character.secondAccessory;
-                        Inventory.Instance.Add(character.secondAccessory);
-                    }
 
-                    character.secondAccessory = equipment;
-                    Inventory.Instance.Remove(equipment);
-                }
+                character.secondAccessory = accessory;
+                Inventory.Instance.Remove(accessory);
             }
         }
 

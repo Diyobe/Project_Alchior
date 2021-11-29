@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using TMPro;
+using System;
 
 public class EquipmentUI : MonoBehaviour
 {
@@ -18,7 +19,12 @@ public class EquipmentUI : MonoBehaviour
     Player inputPlayer;
 
     [SerializeField] GameObject inventoryElementPrefab;
-    [SerializeField] Transform content;
+
+    [SerializeField] RectTransform inventoryElementRectTransform;
+    int indexLimit = 0;
+    [SerializeField] int scrollSize = 3;
+    IEnumerator coroutineScroll = null;
+    [SerializeField] RectTransform content;
     [SerializeField] RectTransform UICursor;
     List<InventoryUIElement> inventoryUIElements = new List<InventoryUIElement>();
 
@@ -30,8 +36,10 @@ public class EquipmentUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI specialAttackStatText;
     [SerializeField] TextMeshProUGUI defenseStatText;
     [SerializeField] TextMeshProUGUI specialDefenseStatText;
+    [SerializeField] Transform characterModelParent;
 
     [SerializeField] PauseManager pauseManager;
+    PartyManager partyManager;
 
     int characterCursor = 0;
 
@@ -39,14 +47,24 @@ public class EquipmentUI : MonoBehaviour
 
     private void OnEnable()
     {
+        partyManager = PartyManager.Instance;
         isSlotSelected = false;
         equipmentInventory.SetActive(false);
         equipmentSlotCursor = 0;
         inventoryCursor = 0;
 
-        UpdateEquipmentSlots(PartyManager.Instance.characterDatas[0]);
-        UpdateStatTexts(PartyManager.Instance.characterDatas[0]);
+        UpdateEquipmentSlots(partyManager.characterDatas[0]);
+        UpdateStatTexts(partyManager.characterDatas[0]);
+        UpdateCharacterModel(partyManager.characterDatas[0]);
         StartCoroutine(DelayedUpdateCursorPosition());
+    }
+
+    private void UpdateCharacterModel(CharacterData characterData)
+    {
+        foreach (Transform child in characterModelParent)
+            Destroy(child.gameObject);
+
+        Instantiate(characterData.characterMenuModel, characterModelParent);
     }
 
     void Start()
@@ -69,12 +87,12 @@ public class EquipmentUI : MonoBehaviour
             else
             {
                 if (inventoryUIElements.Count <= 0) return;
-                PartyManager.Instance.EquipItem(PartyManager.Instance.characterDatas[characterCursor]
+                partyManager.EquipItem(partyManager.characterDatas[characterCursor]
                                               , inventoryUIElements[inventoryCursor].currentInventoryEquipment.Equipment
                                               , equipmentSlots[equipmentSlotCursor].isFirstAccessory);
 
-                UpdateEquipmentSlots(PartyManager.Instance.characterDatas[characterCursor]);
-                UpdateStatTexts(PartyManager.Instance.characterDatas[characterCursor]);
+                UpdateEquipmentSlots(partyManager.characterDatas[characterCursor]);
+                UpdateStatTexts(partyManager.characterDatas[characterCursor]);
                 CloseEquipmentInventory();
             }
         }
@@ -89,11 +107,11 @@ public class EquipmentUI : MonoBehaviour
 
         if (inputPlayer.GetButtonDown("Toss/Unequip"))
         {
-            PartyManager.Instance.Unequip(PartyManager.Instance.characterDatas[characterCursor],
-                                            ReturnSlotEquipment(equipmentSlots[equipmentSlotCursor], PartyManager.Instance.characterDatas[characterCursor]),
+            partyManager.Unequip(partyManager.characterDatas[characterCursor],
+                                            ReturnSlotEquipment(equipmentSlots[equipmentSlotCursor], partyManager.characterDatas[characterCursor]),
                                             equipmentSlots[equipmentSlotCursor].isFirstAccessory);
-            UpdateSlotText(equipmentSlots[equipmentSlotCursor], PartyManager.Instance.characterDatas[characterCursor]);
-            UpdateStatTexts(PartyManager.Instance.characterDatas[characterCursor]);
+            UpdateSlotText(equipmentSlots[equipmentSlotCursor], partyManager.characterDatas[characterCursor]);
+            UpdateStatTexts(partyManager.characterDatas[characterCursor]);
         }
 
         if (inputPlayer.GetAxis("MenuMoveAxisY") > 0.5f && !joystickVerticalPushed)
@@ -159,7 +177,7 @@ public class EquipmentUI : MonoBehaviour
             }
             equipmentSlots[equipmentSlotCursor].selected = true;
         }
-
+        MoveScrollRect();
         StartCoroutine(DelayedUpdateCursorPosition());
     }
 
@@ -289,5 +307,44 @@ public class EquipmentUI : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.0001f);
         UpdateCursorPosition();
+    }
+
+    protected void MoveScrollRect()
+    {
+        if (content == null) return;
+
+        if (inventoryCursor > indexLimit)
+        {
+            indexLimit = inventoryCursor;
+            coroutineScroll = MoveScrollRectCoroutine();
+            if (coroutineScroll != null)
+            {
+                StopCoroutine(coroutineScroll);
+            }
+            StartCoroutine(coroutineScroll);
+        }
+        else if (inventoryCursor < indexLimit - scrollSize + 1)
+        {
+            indexLimit = inventoryCursor + scrollSize - 1;
+            coroutineScroll = MoveScrollRectCoroutine();
+            if (coroutineScroll != null)
+            {
+                StopCoroutine(coroutineScroll);
+            }
+            StartCoroutine(coroutineScroll);
+        }
+
+    }
+
+    private IEnumerator MoveScrollRectCoroutine()
+    {
+        //float t = 0f;
+        //float speed = 1 / 0.1f;
+        int ratio = indexLimit - scrollSize;
+        Vector2 destination = new Vector2(0, Mathf.Clamp(ratio * inventoryElementRectTransform.sizeDelta.y, 0, (inventoryUIElements.Count - scrollSize) * inventoryElementRectTransform.sizeDelta.y));
+
+        content.anchoredPosition = destination;
+
+        yield return null;
     }
 }

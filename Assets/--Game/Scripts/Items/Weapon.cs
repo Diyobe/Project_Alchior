@@ -7,6 +7,12 @@ public class Weapon : Equipment
 {
     [Header("Categories")]
     public WeaponType weaponType;
+
+    public Weapon()
+    {
+        equipmentType = EquipmentType.WEAPON;
+    }
+
     public override void Use()
     {
         base.Use();

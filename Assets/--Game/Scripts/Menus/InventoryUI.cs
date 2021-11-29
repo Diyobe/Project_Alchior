@@ -9,13 +9,17 @@ public class InventoryUI : MonoBehaviour
 {
     Inventory inventory;
     [SerializeField] TextMeshProUGUI elementDescriptionText;
-    [SerializeField] Transform content;
+    [SerializeField] RectTransform content;
     [SerializeField] GameObject inventoryElementPrefab;
     [SerializeField] RectTransform UICursor;
     List<InventoryUIElement> inventoryUIElements = new List<InventoryUIElement>();
 
     [SerializeField] PauseManager pauseManager;
     int cursorNumber = 0; //Le nom est à changer
+    [SerializeField] RectTransform inventoryElementRectTransform;
+    int indexLimit = 0;
+    [SerializeField] int scrollSize = 3;
+    IEnumerator coroutineScroll = null;
 
     bool joystickVerticalPushed = false;
     Player inputPlayer;
@@ -25,7 +29,7 @@ public class InventoryUI : MonoBehaviour
     {
         inventory = Inventory.Instance;
         inputPlayer = ReInput.players.GetPlayer(0);
-
+        indexLimit = scrollSize;
 
     }
 
@@ -138,12 +142,52 @@ public class InventoryUI : MonoBehaviour
                 cursorNumber = inventoryUIElements.Count - 1;
         }
         inventoryUIElements[cursorNumber].Select();
-        UpdateCursorPosition();
+        MoveScrollRect();
+        StartCoroutine(DelayedUpdateCursorPosition());
     }
 
     IEnumerator DelayedUpdateCursorPosition()
     {
         yield return new WaitForSecondsRealtime(0.0001f);
         UpdateCursorPosition();
+    }
+
+    protected void MoveScrollRect()
+    {
+        if (content == null) return;
+
+        if (cursorNumber > indexLimit)
+        {
+            indexLimit = cursorNumber;
+            coroutineScroll = MoveScrollRectCoroutine();
+            if (coroutineScroll != null)
+            {
+                StopCoroutine(coroutineScroll);
+            }
+            StartCoroutine(coroutineScroll);
+        }
+        else if (cursorNumber < indexLimit - scrollSize + 1)
+        {
+            indexLimit = cursorNumber + scrollSize - 1;
+            coroutineScroll = MoveScrollRectCoroutine();
+            if (coroutineScroll != null)
+            {
+                StopCoroutine(coroutineScroll);
+            }
+            StartCoroutine(coroutineScroll);
+        }
+
+    }
+
+    private IEnumerator MoveScrollRectCoroutine()
+    {
+        //float t = 0f;
+        //float speed = 1 / 0.1f;
+        int ratio = indexLimit - scrollSize;
+        Vector2 destination = new Vector2(0, Mathf.Clamp(ratio * inventoryElementRectTransform.sizeDelta.y, 0, (inventoryUIElements.Count - scrollSize) * inventoryElementRectTransform.sizeDelta.y));
+        
+        content.anchoredPosition = destination;
+
+        yield return null;
     }
 }

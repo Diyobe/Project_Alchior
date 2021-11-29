@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
+//[CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
 public class Equipment : Item
 {
     [Header("Categories")]
@@ -30,6 +30,12 @@ public class Equipment : Item
     [Header("Other Modifiers")]
     public float criticalRateModifier = 0;
     [Range(1, 5)]public float experienceGainMultiplier = 1;
+
+
+    public Equipment()
+    {
+        isStackable = false;
+    }
 
     public override void Use()
     {

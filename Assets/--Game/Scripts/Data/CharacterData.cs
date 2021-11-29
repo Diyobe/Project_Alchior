@@ -10,7 +10,7 @@ public class CharacterData : ScriptableObject
     public string characterName;
 
     public Sprite characterPortraitMenu;
-    public GameObject characterModel;
+    public GameObject characterMenuModel;
 
     [Header("Main Stats")]
     public int baseMaxHealthPoints = 500;
@@ -44,10 +44,10 @@ public class CharacterData : ScriptableObject
     [Header("Equipment")]
     public WeaponType weaponType;
     public Weapon weapon;
-    public Equipment chestEquipment;
-    public Equipment legsEquipment;
-    public Equipment firstAccessory;
-    public Equipment secondAccessory;
+    public ChestEquipment chestEquipment;
+    public LegsEquipment legsEquipment;
+    public AccessoryEquipment firstAccessory;
+    public AccessoryEquipment secondAccessory;
 
 
     public delegate void OnStatChanged();
