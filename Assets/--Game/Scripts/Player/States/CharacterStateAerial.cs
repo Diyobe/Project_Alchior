@@ -17,11 +17,13 @@ public class CharacterStateAerial : CharacterState
 
     public override void UpdateState(CharacterBase character)
     {
+        if (GameManager.Instance.gamePaused) return;
         character.Movement.AirControl(character.inputPlayer.GetAxis("MoveX"), character.inputPlayer.GetAxis("MoveZ"));
     }
 
     public override void LateUpdateState(CharacterBase character)
     {
+        if (GameManager.Instance.gamePaused) return;
         if (character.Rigidbody.IsGrounded() && character.canLand)
         {
             character.Movement.isJumping = false;

@@ -25,7 +25,7 @@ public class CharacterStateIdle : CharacterState
 
 	public override void UpdateState(CharacterBase character)
 	{
-
+		if (GameManager.Instance.gamePaused) return;
 		character.Movement.HandleGravity();
 		character.Movement.HandleMovement(character.inputPlayer.GetAxis("MoveX"), character.inputPlayer.GetAxis("MoveZ"));
 
@@ -37,7 +37,7 @@ public class CharacterStateIdle : CharacterState
 		float currentSpeed = Mathf.Clamp(newVector.magnitude * 2, 0, character.Movement.runningSpeed) / character.Movement.runningSpeed;
 		character.Movement.animator.SetFloat("IdleMovement", currentSpeed);
 
-        if (character.inputPlayer.GetButtonDown("Interact"))
+        if (character.inputPlayer.GetButtonDown("ItemInteract"))
         {
 			character.actions.Interact();
         }

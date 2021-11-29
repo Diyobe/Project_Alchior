@@ -8,6 +8,8 @@ public class InventoryUIElement : MonoBehaviour
 {
     [HideInInspector]
     public InventoryItem currentInventoryItem;
+    [HideInInspector]
+    public InventoryEquipment currentInventoryEquipment;
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI elementNameText;
     [SerializeField] TextMeshProUGUI elementQuantityText;
@@ -25,6 +27,14 @@ public class InventoryUIElement : MonoBehaviour
         icon.sprite = currentInventoryItem.Item.icon;
         elementNameText.text = currentInventoryItem.Item.name;
         elementQuantityText.text = currentInventoryItem.Amount.ToString();
+    }
+
+    public void UpdateElementVisualEquipment(InventoryEquipment inventoryEquipment)
+    {
+        currentInventoryEquipment = inventoryEquipment;
+        icon.sprite = currentInventoryEquipment.Equipment.icon;
+        elementNameText.text = currentInventoryEquipment.Equipment.name;
+        elementQuantityText.text = currentInventoryEquipment.Amount.ToString();
     }
 
     public void Select()

@@ -13,32 +13,32 @@ public class CharacterData : ScriptableObject
     public GameObject characterModel;
 
     [Header("Main Stats")]
-    public uint maxHealthPoints = 500;
+    public int baseMaxHealthPoints = 500;
     [HideInInspector] public float currentHP;
-    public uint maxThermaPoints = 100;
+    public int baseMaxThermaPoints = 100;
     [HideInInspector] public float currentTH;
     [Space]
-    public uint attack = 10;
-    public uint specialAttack = 10;
-    public uint defense = 10;
-    public uint specialDefense = 10;
+    public int baseAttack = 10;
+    public int baseSpecialAttack = 10;
+    public int baseDefense = 10;
+    public int baseSpecialDefense = 10;
 
     [Header("Experience Stats")]
     [Range(1, 100)] public int level = 1;
     public float maxExperience = 3000;
 
     [Header("Hidden Stats")]
-    public float stamina = 100;
-    [Range(0, 100)] public float criticalRate = 15;
+    public float baseStamina = 100;
+    [Range(0, 100)] public float baseCriticalRate = 15;
     //à voir si on fait la speed
 
     [Header("Elemental Resistances")]
-    [Range(0, 100)] public float pyrosResistance = 0;
-    [Range(0, 100)] public float naturaResistance = 0;
-    [Range(0, 100)] public float terraResistance = 0;
-    [Range(0, 100)] public float electraResistance = 0;
-    [Range(0, 100)] public float aerosResistance = 0;
-    [Range(0, 100)] public float hydrosResistance = 0;
+    [Range(0, 100)] public float basePyrosResistance = 0;
+    [Range(0, 100)] public float baseNaturaResistance = 0;
+    [Range(0, 100)] public float baseTerraResistance = 0;
+    [Range(0, 100)] public float baseElectraResistance = 0;
+    [Range(0, 100)] public float baseAerosResistance = 0;
+    [Range(0, 100)] public float baseHydrosResistance = 0;
 
     [Space]
     [Header("Equipment")]
@@ -53,22 +53,83 @@ public class CharacterData : ScriptableObject
     public delegate void OnStatChanged();
     public OnStatChanged onStatChangedCallback;
 
+
+    public int GetMaxHP()
+    {
+        int maxHPAfterCalculation = baseMaxHealthPoints + (weapon ? weapon.maxHealthPointsModifier : 0)
+                                                + (chestEquipment ? chestEquipment.maxHealthPointsModifier : 0) 
+                                                + (legsEquipment ? legsEquipment.maxHealthPointsModifier : 0)
+                                                + (firstAccessory ? firstAccessory.maxHealthPointsModifier : 0)
+                                                + (secondAccessory ? secondAccessory.maxHealthPointsModifier : 0);
+        return maxHPAfterCalculation;
+    }
+
+    public int GetMaxTH()
+    {
+        int maxTHAfterCalculation = baseMaxThermaPoints + (weapon ? weapon.maxThermaPointsModifier : 0)
+                                                + (chestEquipment ? chestEquipment.maxThermaPointsModifier : 0)
+                                                + (legsEquipment ? legsEquipment.maxThermaPointsModifier : 0)
+                                                + (firstAccessory ? firstAccessory.maxThermaPointsModifier : 0)
+                                                + (secondAccessory ? secondAccessory.maxThermaPointsModifier : 0);
+        return maxTHAfterCalculation;
+    }
+
+    public int GetAttack()
+    {
+        int attackAfterCalculation = baseAttack + (weapon ? weapon.attackModifier : 0)
+                                                + (chestEquipment ? chestEquipment.attackModifier : 0) 
+                                                + (legsEquipment ? legsEquipment.attackModifier : 0)
+                                                + (firstAccessory ? firstAccessory.attackModifier : 0)
+                                                + (secondAccessory ? secondAccessory.attackModifier : 0);
+        return attackAfterCalculation;
+    }
+
+    public int GetDefense()
+    {
+        int defenseAfterCalculation = baseDefense + (weapon ? weapon.defenseModifier : 0)
+                                                + (chestEquipment ? chestEquipment.defenseModifier : 0)
+                                                + (legsEquipment ? legsEquipment.defenseModifier : 0)
+                                                + (firstAccessory ? firstAccessory.defenseModifier : 0)
+                                                + (secondAccessory ? secondAccessory.defenseModifier : 0);
+        return defenseAfterCalculation;
+    }
+
+    public int GetSpecialAttack()
+    {
+        int specialAttackAfterCalculation = baseSpecialAttack + (weapon ? weapon.specialAttackModifier : 0)
+                                                + (chestEquipment ? chestEquipment.specialAttackModifier : 0) 
+                                                + (legsEquipment ? legsEquipment.specialAttackModifier : 0)
+                                                + (firstAccessory ? firstAccessory.specialAttackModifier : 0)
+                                                + (secondAccessory ? secondAccessory.specialAttackModifier : 0);
+        return specialAttackAfterCalculation;
+    }
+
+    public int GetSpecialDefense()
+    {
+        int specialDefenseAfterCalculation = baseSpecialDefense + (weapon ? weapon.specialDefenseModifier : 0)
+                                                + (chestEquipment ? chestEquipment.specialDefenseModifier : 0)
+                                                + (legsEquipment ? legsEquipment.specialDefenseModifier : 0)
+                                                + (firstAccessory ? firstAccessory.specialDefenseModifier : 0)
+                                                + (secondAccessory ? secondAccessory.specialDefenseModifier : 0);
+        return specialDefenseAfterCalculation;
+    }
+
     public void RegainHealthPoints(int amount)
     {
-        if (currentHP + amount < maxHealthPoints)
+        if (currentHP + amount < baseMaxHealthPoints)
             currentHP += amount;
         else
-            currentHP = maxHealthPoints;
+            currentHP = baseMaxHealthPoints;
 
         onStatChangedCallback?.Invoke();
     }
 
     public void RegainThermaPoints(int amount)
     {
-        if (currentTH + amount < maxThermaPoints)
+        if (currentTH + amount < baseMaxThermaPoints)
             currentTH += amount;
         else
-            currentTH = maxThermaPoints;
+            currentTH = baseMaxThermaPoints;
 
         onStatChangedCallback?.Invoke();
     }

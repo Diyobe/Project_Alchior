@@ -13,6 +13,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject inventoryElementPrefab;
     [SerializeField] RectTransform UICursor;
     List<InventoryUIElement> inventoryUIElements = new List<InventoryUIElement>();
+
+    [SerializeField] PauseManager pauseManager;
     int cursorNumber = 0; //Le nom est à changer
 
     bool joystickVerticalPushed = false;
@@ -30,7 +32,16 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.Instance.gamePlaying || !GameManager.Instance.gamePaused || GameManager.Instance.isInCutscene || GameManager.Instance.popUpOpened || inventoryUIElements.Count <= 0) return;
+        if (!GameManager.Instance.gamePlaying || !GameManager.Instance.gamePaused || GameManager.Instance.isInCutscene || GameManager.Instance.popUpOpened) return;
+
+        if (pauseManager.currentState != PauseManager.State.ITEMS) return;
+
+        if (inputPlayer.GetButtonDown("MenuCancel"))
+        {
+            pauseManager.ReturnToMenuPause();
+        }
+
+        if (inventoryUIElements.Count <= 0) return;
 
         if (inputPlayer.GetButtonDown("MenuValidate"))
         {
@@ -40,12 +51,12 @@ public class InventoryUI : MonoBehaviour
         if (inputPlayer.GetAxis("MenuMoveAxisY") > 0.5f && !joystickVerticalPushed)
         {
             joystickVerticalPushed = true;
-            MoveToElement(true);
+            MoveToElement(false);
         }
         else if (inputPlayer.GetAxis("MenuMoveAxisY") < -0.5f && !joystickVerticalPushed)
         {
             joystickVerticalPushed = true;
-            MoveToElement(false);
+            MoveToElement(true);
             //else if (currentState == State.ITEMS)
             //{
             //    MoveToCategory(false, itemsMenuCategories);

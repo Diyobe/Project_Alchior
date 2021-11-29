@@ -40,9 +40,9 @@ public class Equipment : Item
         //Remove it from the inventory
     }
 
-    public virtual void Equip(CharacterBase character, bool isFirstAccessory)
+    public virtual void Equip(CharacterData character, bool isFirstAccessory)
     {
-        Debug.Log(character.CharacterName + " is now equiped with " + name);
+        Debug.Log(character.characterName + " is now equiped with " + name);
         PartyManager.Instance.EquipItem(character, this, isFirstAccessory);
     }
 }

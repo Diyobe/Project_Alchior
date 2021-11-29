@@ -68,22 +68,44 @@ public class PauseManager : MonoBehaviour
 
             if (_mainPlayer.GetButtonDown("MenuCancel"))
             {
-                if (currentState == State.ITEMS)
-                {
-                    ReturnToMenuPause();
-                }
-                else if (currentState == State.PAUSE)
+                if (currentState == State.PAUSE)
                 {
                     ClosePause();
                 }
+                //else
+                //{
+                //    ReturnToMenuPause();
+                //}
             }
 
             if (_mainPlayer.GetButtonDown("MenuValidate"))
             {
                 if (currentState == State.PAUSE)
                 {
-                    if (categoryCursor == 0)
-                        GoToItems();
+                    switch (categoryCursor)
+                    {
+                        case 0:
+                            GoToItems();
+                            break;
+                        case 1:
+                            //Go to Skills menu
+                            break;
+                        case 2:
+                            GoToEquipment();
+                            break;
+                        case 3:
+                            //Go to Gem Pod menu
+                            break;
+                        case 4:
+                            //Go to Strategy menu
+                            break;
+                        case 5:
+                            //Go to Guide menu
+                            break;
+                        case 6:
+                            //Go to System menu
+                            break;
+                    }
                 }
             }
 
@@ -187,14 +209,23 @@ public class PauseManager : MonoBehaviour
         currentState = State.ITEMS;
     }
 
-    void ReturnToMenuPause()
+    void GoToEquipment()
+    {
+        menuAnimator.SetTrigger("Equipment");
+
+        //categoryCursor = 0;
+        //itemsMenuCategories[categoryCursor].Select();
+        currentState = State.EQUIPMENT;
+    }
+
+    public void ReturnToMenuPause()
     {
         menuAnimator.SetTrigger("MainMenu");
 
         foreach (CategoryButton category in pauseMenuCategories)
             category.UnSelect();
 
-        categoryCursor = 0;
+        //categoryCursor = 0;
         pauseMenuCategories[categoryCursor].Select();
         currentState = State.PAUSE;
     }

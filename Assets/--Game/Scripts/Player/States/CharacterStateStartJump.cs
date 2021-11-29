@@ -26,10 +26,11 @@ public class CharacterStateStartJump : CharacterState
 
     public override void UpdateState(CharacterBase character)
     {
+        if (GameManager.Instance.gamePaused) return;
         //currentCrouchTime += Time.deltaTime;
-            character.Movement.Jump();
-            character.Movement.animator.SetTrigger("Jumping");
-            character.SetState(jumpState);
+        character.Movement.Jump();
+        character.Movement.animator.SetTrigger("Jumping");
+        character.SetState(jumpState);
         //if (currentCrouchTime >= maxCrouchTime)
         //{
         //}

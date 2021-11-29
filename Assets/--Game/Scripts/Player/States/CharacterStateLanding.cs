@@ -40,6 +40,7 @@ public class CharacterStateLanding : CharacterState
 
 	public override void UpdateState(CharacterBase character)
 	{
+		if (GameManager.Instance.gamePaused) return;
 		character.Movement.SpeedX *= 0.9f;
 		currentLandingTime += Time.deltaTime;
 
