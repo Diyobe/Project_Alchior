@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f7cafcb1a8dce548ad9792f1b01d24a, type: 3}
+  m_Name: Ninjamurai_Data
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 3952135926525896205, guid: 720ce4ebf16584840911387242bcafe5, type: 3}
+  characterName: Ninjamurai
+  characterPortraitMenu: {fileID: 21300000, guid: af724d6b8dc9e9d4ea51b86525359758, type: 3}
+  characterMenuModel: {fileID: 9004933021936016712, guid: 20ff6f602ee797e47947362523a3fed7, type: 3}
+  baseMaxHealthPoints: 500
+  currentHP: 0
+  baseMaxThermaPoints: 100
+  currentTH: 0
+  baseAttack: 1
+  baseSpecialAttack: 1
+  baseDefense: 1
+  baseSpecialDefense: 1
+  level: 1
+  maxExperience: 3000
+  baseStamina: 100
+  baseCriticalRate: 15
+  basePyrosResistance: 0
+  baseNaturaResistance: 0
+  baseTerraResistance: 0
+  baseElectraResistance: 0
+  baseAerosResistance: 0
+  baseHydrosResistance: 0
+  skills: {fileID: 11400000, guid: fc6250b4ee324114eb9606e613aaed27, type: 2}
+  weaponType: 6
+  weapon: {fileID: 11400000, guid: 2de1718875cb21a4da6448757c22b53f, type: 2}
+  chestEquipment: {fileID: 11400000, guid: 8ea1dea6f1150e14bb4a030d8ec734ea, type: 2}
+  legsEquipment: {fileID: 11400000, guid: 4ebaa50acdc34684cab181ed90cdfd9a, type: 2}
+  firstAccessory: {fileID: 11400000, guid: 50905d9ef295e374f8691fa31562cd1d, type: 2}
+  secondAccessory: {fileID: 0}

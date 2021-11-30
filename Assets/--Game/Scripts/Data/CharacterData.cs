@@ -6,7 +6,6 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     public GameObject playerPrefab;
-    public CharacterBase character;
     public string characterName;
 
     public Sprite characterPortraitMenu;
@@ -14,7 +13,7 @@ public class CharacterData : ScriptableObject
 
     [Header("Main Stats")]
     public int baseMaxHealthPoints = 500;
-    [HideInInspector] public float currentHP;
+    [HideInInspector] public float currentHP = 10;
     public int baseMaxThermaPoints = 100;
     [HideInInspector] public float currentTH;
     [Space]
@@ -39,6 +38,10 @@ public class CharacterData : ScriptableObject
     [Range(0, 100)] public float baseElectraResistance = 0;
     [Range(0, 100)] public float baseAerosResistance = 0;
     [Range(0, 100)] public float baseHydrosResistance = 0;
+
+    [Space]
+    [Header("Skill Pool")]
+    public CharacterSkills skills;
 
     [Space]
     [Header("Equipment")]
@@ -132,5 +135,12 @@ public class CharacterData : ScriptableObject
             currentTH = baseMaxThermaPoints;
 
         onStatChangedCallback?.Invoke();
+    }
+
+    public void TakeDamage(float amount)
+    {
+        currentHP -= amount;
+        if (currentHP < 0)
+            currentHP = 0;
     }
 }

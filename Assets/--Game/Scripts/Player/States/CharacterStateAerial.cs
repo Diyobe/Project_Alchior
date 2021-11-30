@@ -11,7 +11,8 @@ public class CharacterStateAerial : CharacterState
 
     public override void StartState(CharacterBase character, CharacterState oldState)
     {
-        character.Movement.animator.SetBool("IsGrounded", false);
+        //character.Movement.animator.SetBool("IsGrounded", false);
+        character.Movement.animator.SetTrigger("Fall");
         StartCoroutine(StartCanLand(character));
     }
 

@@ -62,6 +62,13 @@ public class CharacterMovement : MonoBehaviour
         set { speedZ = value; }
     }
 
+    protected float motionSpeed = 1;
+    public float MotionSpeed
+    {
+        get { return motionSpeed; }
+        set { motionSpeed = value; }
+    }
+
     float groundedGravity = 0.5f;
     public float gravity = 30f;
 
@@ -93,7 +100,7 @@ public class CharacterMovement : MonoBehaviour
             speedZ = dir.z * walkingSpeed;
 
         }
-        characterRigibody.HandleMovement(speedX, speedY, speedZ);
+        characterRigibody.HandleMovement(speedX * motionSpeed, speedY * motionSpeed, speedZ * motionSpeed);
 
         if (_dirX != 0 || _dirZ != 0)
         {
@@ -116,8 +123,21 @@ public class CharacterMovement : MonoBehaviour
 
         speedZ += (airControl * dir.z * airFriction) * Time.deltaTime;
         speedZ = Mathf.Clamp(speedZ, -maxAerialSpeed, maxAerialSpeed);
-        characterRigibody.HandleMovement(speedX, speedY, speedZ);
+        characterRigibody.HandleMovement(speedX * motionSpeed, speedY * motionSpeed, speedZ * motionSpeed);
 
+    }
+    public void MoveForward(float multiplier)
+    {
+        characterRigibody.HandleMovement(walkingSpeed * characterRigibody.transform.forward.x * multiplier * motionSpeed, 
+                                                        speedY, 
+                                                        walkingSpeed * characterRigibody.transform.forward.z * multiplier * motionSpeed);
+    }
+
+    public void MoveBackward(float multiplier)
+    {
+        characterRigibody.HandleMovement(walkingSpeed * -characterRigibody.transform.forward.x * multiplier * motionSpeed,
+                                                        speedY,
+                                                        -walkingSpeed * characterRigibody.transform.forward.z * multiplier * motionSpeed);
     }
 
     public void HandleGravity()
@@ -138,6 +158,26 @@ public class CharacterMovement : MonoBehaviour
         else
             speedY = -gravityLimit;
     }
+
+    public void ApplyGravityWithMultiplier(float multiplier)
+    {
+        float gravityLimit;
+
+        if (characterRigibody.IsGrounded())
+        {
+            gravityLimit = groundedGravity;
+        }
+        else
+        {
+            gravityLimit = gravity;
+        }
+
+        if (speedY > -gravityLimit)
+            speedY -= Time.deltaTime * (fallSpeed * multiplier);
+        else
+            speedY = -gravityLimit;
+    }
+
     public void Jump()
     {
         Jump(jumpForce);

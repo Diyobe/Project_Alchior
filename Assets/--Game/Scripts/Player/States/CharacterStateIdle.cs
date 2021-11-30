@@ -17,10 +17,15 @@ public class CharacterStateIdle : CharacterState
 	[SerializeField]
 	CharacterState turnAroundState;
 
+	[Title("Parameter - Actions")]
+	[SerializeField]
+	CharacterMoveset moveset;
+
 
 	public override void StartState(CharacterBase character, CharacterState oldState)
 	{
-		character.Movement.animator.SetBool("IsGrounded", true);
+		character.Movement.animator.SetTrigger("Idle");
+		//character.Movement.animator.SetBool("IsGrounded", true);
 	}
 
 	public override void UpdateState(CharacterBase character)
@@ -47,6 +52,10 @@ public class CharacterStateIdle : CharacterState
 			character.canLand = false;
 			character.Movement.Jump();
 			character.SetState(jumpStartState);
+		}
+		else if (moveset.ActionAttackGrounded(character))
+		{
+			return;
 		}
 
 		if (!character.Rigidbody.IsGrounded())

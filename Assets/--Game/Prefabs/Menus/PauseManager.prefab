@@ -1516,7 +1516,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5500759520180776888}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 1
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2985,7 +2985,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9130777457010936330}
   - component: {fileID: 5301636839805345483}
-  - component: {fileID: 1334463163105326893}
   - component: {fileID: 4761769005050507359}
   m_Layer: 0
   m_Name: MenuCamera
@@ -3051,14 +3050,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1334463163105326893
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3008411529917754167}
-  m_Enabled: 1
 --- !u!114 &4761769005050507359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10605,7 +10596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19522074, g: 0.23574659, b: 0.38679248, a: 0.92941177}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12986,8 +12977,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8999902233568496838}
   m_HandleRect: {fileID: 8999902233568496832}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.99999994
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 1
   m_OnValueChanged:
     m_PersistentCalls:
