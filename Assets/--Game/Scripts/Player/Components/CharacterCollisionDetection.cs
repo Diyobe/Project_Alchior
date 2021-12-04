@@ -12,7 +12,6 @@ public class CharacterCollisionDetection : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.LogError("has collid");
         if (other.CompareTag(this.tag))
             return;
         if (character.Knockback.IsInvulnerable == true)

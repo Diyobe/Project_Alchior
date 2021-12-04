@@ -245,7 +245,6 @@ public class AttackSubManager : MonoBehaviour
                 }
 
                 user.Action.HasHit(target);
-            Debug.LogError("Enemy hit");
             }
         //}
     }

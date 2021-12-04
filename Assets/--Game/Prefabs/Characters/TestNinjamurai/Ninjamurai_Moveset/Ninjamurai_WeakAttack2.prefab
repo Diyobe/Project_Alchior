@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 6550809169482506170}
   - {fileID: 1743016195365135570}
   - {fileID: 1466417115825222061}
+  - {fileID: 9056696723187114267}
   playerHitEvent: {fileID: 0}
   clashLevel: 1
   noClash: 0
@@ -380,6 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8660884532483376934}
   - component: {fileID: 1466417115825222061}
+  - component: {fileID: 9056696723187114267}
   m_Layer: 0
   m_Name: Feedbacks
   m_TagString: Untagged
@@ -415,6 +417,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particuleObject: {fileID: 1570927096764274, guid: 643639841fb531e4ba8097fed4eb9ac7, type: 3}
   timeBeforeDestroying: 0.5
+--- !u!114 &9056696723187114267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4051188606378626856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0553305eea4f1d14c9b11d9eea130465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders:
+  - {fileID: 3424683242720630139}
 --- !u!1 &6817185034318477202
 GameObject:
   m_ObjectHideFlags: 0

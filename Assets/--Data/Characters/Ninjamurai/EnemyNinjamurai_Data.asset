@@ -37,7 +37,7 @@ MonoBehaviour:
   skills: {fileID: 11400000, guid: fc6250b4ee324114eb9606e613aaed27, type: 2}
   weaponType: 6
   weapon: {fileID: 11400000, guid: 2de1718875cb21a4da6448757c22b53f, type: 2}
-  chestEquipment: {fileID: 11400000, guid: 8ea1dea6f1150e14bb4a030d8ec734ea, type: 2}
-  legsEquipment: {fileID: 11400000, guid: 4ebaa50acdc34684cab181ed90cdfd9a, type: 2}
-  firstAccessory: {fileID: 11400000, guid: 50905d9ef295e374f8691fa31562cd1d, type: 2}
+  chestEquipment: {fileID: 0}
+  legsEquipment: {fileID: 0}
+  firstAccessory: {fileID: 0}
   secondAccessory: {fileID: 0}

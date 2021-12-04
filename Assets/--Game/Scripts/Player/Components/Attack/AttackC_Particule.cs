@@ -13,7 +13,6 @@ public class AttackC_Particule : AttackComponent
 
     public override void OnHit(CharacterBase user, CharacterBase target)
     {
-        Debug.LogError("Spawn prefab");
         GameObject go = Instantiate(particuleObject, target.Knockback.ContactPoint, Quaternion.identity);
         go.name = particuleObject.name;
         Destroy(go, timeBeforeDestroying);

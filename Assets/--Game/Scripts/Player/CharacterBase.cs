@@ -114,6 +114,9 @@ public class CharacterBase : MonoBehaviour
     public delegate void ActionSetState(CharacterState oldState, CharacterState newState);
     public event ActionSetState OnStateChanged;
 
+    [HideInInspector]
+    public SmearsControllerSword SmearsControllerSword;
+
 
     [SerializeField] int playerID = 0;
     private void Start()

@@ -842,6 +842,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5845402638145636779}
+  movementCancelable: 0
+--- !u!1 &2017056961826176452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876637336988257340}
+  m_Layer: 10
+  m_Name: Components Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &876637336988257340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017056961826176452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1352834460600581135}
+  m_Father: {fileID: 3952135926525896204}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022660694969347692
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +1015,36 @@ MonoBehaviour:
   jumpStartState: {fileID: 4834194079233470166}
   turnAroundState: {fileID: 0}
   moveset: {fileID: 8860640862818627132}
+--- !u!1 &2334198336382517925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5555482355313314743}
+  m_Layer: 10
+  m_Name: SmearsEndPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5555482355313314743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2334198336382517925}
+  m_LocalRotation: {x: 0, y: -0.046234757, z: 0, w: 0.99893063}
+  m_LocalPosition: {x: -0.00077, y: 0.00048, z: 0.00937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3952135926678927344}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -5.3, z: 0}
 --- !u!1 &2350648713395394624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1668,7 @@ Transform:
   - {fileID: 3952135927820274526}
   - {fileID: 1600121137417528722}
   - {fileID: 4768551977826468493}
+  - {fileID: 876637336988257340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1684,6 +1747,7 @@ MonoBehaviour:
   motionSpeed: 1
   actions: {fileID: 1174070137414042928}
   canLand: 1
+  SmearsControllerSword: {fileID: 0}
   playerID: 0
 --- !u!1 &3952135926651406800
 GameObject:
@@ -1745,6 +1809,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5108013912486567792}
+  - {fileID: 4947519848548263283}
+  - {fileID: 5555482355313314743}
   m_Father: {fileID: 3927325319797679476}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1963,6 +2029,107 @@ Transform:
   m_Father: {fileID: 8730848423195901034}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 43.418045, y: 2.2783072, z: -13.366778}
+--- !u!1 &4251716370696360638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1352834460600581135}
+  - component: {fileID: 3308140999792516328}
+  - component: {fileID: 2285256386364245884}
+  - component: {fileID: 3300240228416717911}
+  m_Layer: 10
+  m_Name: CharacterSmears
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1352834460600581135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251716370696360638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 876637336988257340}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3308140999792516328
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251716370696360638}
+  m_Mesh: {fileID: 0}
+--- !u!23 &2285256386364245884
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251716370696360638}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 646f7f025d077814fbfc0764611229ea, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3300240228416717911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251716370696360638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939cac1b116f5314680a77bf505d9a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 8642071422520740886}
+  active: 0
+  startPoint: {fileID: 4947519848548263283}
+  endPoint: {fileID: 5555482355313314743}
+  time: 0.45
+  smoothPoint: 4
+  smoothRatio: 0.25
 --- !u!1 &4326952320420619541
 GameObject:
   m_ObjectHideFlags: 0
@@ -4559,6 +4726,36 @@ Transform:
   m_Father: {fileID: 5306652899542763097}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 49.082996, y: 4.786962, z: 1.0155928}
+--- !u!1 &8879293737309572231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4947519848548263283}
+  m_Layer: 10
+  m_Name: SmearsStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4947519848548263283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879293737309572231}
+  m_LocalRotation: {x: 0, y: -0.046234757, z: 0, w: 0.99893063}
+  m_LocalPosition: {x: -0, y: 0.00133, z: 0.00114}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3952135926678927344}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -5.3, z: 0}
 --- !u!1 &8909312923200062354
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class CharacterData : ScriptableObject
 
     [Header("Main Stats")]
     public int baseMaxHealthPoints = 500;
-    [HideInInspector] public float currentHP = 10;
+    public float currentHP = 10;
     public int baseMaxThermaPoints = 100;
     [HideInInspector] public float currentTH;
     [Space]
@@ -53,9 +53,13 @@ public class CharacterData : ScriptableObject
     public AccessoryEquipment secondAccessory;
 
 
-    public delegate void OnStatChanged();
-    public OnStatChanged onStatChangedCallback;
+    public delegate void OnHpChanged(float hpAmount);
+    public OnHpChanged onHpChanged;
 
+    private void Awake()
+    {
+        currentHP = GetMaxHP();
+    }
 
     public int GetMaxHP()
     {
@@ -124,7 +128,7 @@ public class CharacterData : ScriptableObject
         else
             currentHP = baseMaxHealthPoints;
 
-        onStatChangedCallback?.Invoke();
+        onHpChanged?.Invoke(currentHP);
     }
 
     public void RegainThermaPoints(int amount)
@@ -134,7 +138,7 @@ public class CharacterData : ScriptableObject
         else
             currentTH = baseMaxThermaPoints;
 
-        onStatChangedCallback?.Invoke();
+        //onStatChangedCallback?.Invoke();
     }
 
     public void TakeDamage(float amount)
@@ -142,5 +146,7 @@ public class CharacterData : ScriptableObject
         currentHP -= amount;
         if (currentHP < 0)
             currentHP = 0;
+
+        onHpChanged?.Invoke(currentHP);
     }
 }

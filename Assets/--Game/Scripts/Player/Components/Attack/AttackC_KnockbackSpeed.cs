@@ -40,7 +40,6 @@ public class AttackC_KnockbackSpeed : AttackComponent
     // Appelé au moment où l'attaque touche une target
     public override void OnHit(CharacterBase user, CharacterBase target)
     {
-        Debug.LogError(user.CharacterData.name + " has hit " + target.CharacterData.name);
         target.Knockback.KnockbackDuration = .3f;
         switch (knockbackType)
         {
