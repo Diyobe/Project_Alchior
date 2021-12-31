@@ -21,7 +21,8 @@ public class CharacterStateKnockback : CharacterState
 	
 	public override void LateUpdateState(CharacterBase character)
 	{
-
+		character.Movement.Move();
+		character.Movement.HandleGravity();
 	}
 
 	public override void EndState(CharacterBase character, CharacterState newState)

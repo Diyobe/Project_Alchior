@@ -110,6 +110,11 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void Move()
+    {
+        characterRigibody.HandleMovement(speedX * motionSpeed, speedY * motionSpeed, speedZ * motionSpeed);
+    }
+
     public void AirControl(float _dirX, float _dirZ)
     {
         Vector3 forward = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
@@ -128,8 +133,8 @@ public class CharacterMovement : MonoBehaviour
     }
     public void MoveForward(float multiplier)
     {
-        characterRigibody.HandleMovement(walkingSpeed * characterRigibody.transform.forward.x * multiplier * motionSpeed, 
-                                                        speedY, 
+        characterRigibody.HandleMovement(walkingSpeed * characterRigibody.transform.forward.x * multiplier * motionSpeed,
+                                                        speedY,
                                                         walkingSpeed * characterRigibody.transform.forward.z * multiplier * motionSpeed);
     }
 
@@ -138,6 +143,36 @@ public class CharacterMovement : MonoBehaviour
         characterRigibody.HandleMovement(walkingSpeed * -characterRigibody.transform.forward.x * multiplier * motionSpeed,
                                                         speedY,
                                                         -walkingSpeed * characterRigibody.transform.forward.z * multiplier * motionSpeed);
+    }
+
+    public void Launched(float multiplier)
+    {
+        speedY = jumpForce * multiplier;
+        speedX = -characterRigibody.transform.forward.x * multiplier * motionSpeed;
+        speedZ = -characterRigibody.transform.forward.z * multiplier * motionSpeed;
+        //characterRigibody.HandleMovement(-characterRigibody.transform.forward.x * multiplier * motionSpeed,
+        //                                                0,
+        //                                                -characterRigibody.transform.forward.z * multiplier * motionSpeed);
+    }
+
+    public void Spiked(float multiplier)
+    {
+        speedY = -gravity * multiplier;
+        //characterRigibody.HandleMovement(-characterRigibody.transform.forward.x * multiplier * motionSpeed,
+        //                                                0,
+        //                                                -characterRigibody.transform.forward.z * multiplier * motionSpeed);
+    }
+
+    public void LookAt(Vector3 vector)
+    {
+        Vector3 positionToLookAt;
+
+        positionToLookAt.x = vector.x;
+        positionToLookAt.y = 0f;
+        positionToLookAt.z = vector.z;
+
+        Quaternion targetRotation = Quaternion.LookRotation(positionToLookAt);
+        characterRigibody.transform.rotation = targetRotation;
     }
 
     public void HandleGravity()

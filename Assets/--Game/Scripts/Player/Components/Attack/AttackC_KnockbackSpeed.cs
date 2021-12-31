@@ -7,7 +7,8 @@ public enum KnockbackType
 {
     Knockback,
     Knockdown,
-    Launcher
+    Launcher,
+    Spike
 }
 
 public class AttackC_KnockbackSpeed : AttackComponent
@@ -15,6 +16,10 @@ public class AttackC_KnockbackSpeed : AttackComponent
     [Title("HitStop")]
     [SerializeField]
     float hitStopDuration = 0.1f;
+
+    [Title("Launch Distance")]
+    [SerializeField]
+    float launchDistance = 1f;
 
     [SerializeField]
     KnockbackType knockbackType;
@@ -40,11 +45,20 @@ public class AttackC_KnockbackSpeed : AttackComponent
     // Appelé au moment où l'attaque touche une target
     public override void OnHit(CharacterBase user, CharacterBase target)
     {
-        target.Knockback.KnockbackDuration = .3f;
+        target.Movement.LookAt(user.transform.position);
         switch (knockbackType)
         {
             case KnockbackType.Knockback:
-                target.Movement.MoveBackward(1);
+                target.Knockback.KnockbackDuration = .3f;
+                target.Movement.MoveBackward(launchDistance);
+                break;
+            case KnockbackType.Launcher:
+                target.Knockback.KnockbackDuration = 1f;
+                target.Movement.Launched(launchDistance);
+                break;
+            case KnockbackType.Spike:
+                target.Knockback.KnockbackDuration = 1f;
+                target.Movement.Spiked(launchDistance);
                 break;
         }
 

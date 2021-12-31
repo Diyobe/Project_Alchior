@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingState: {fileID: 8153404004253164234}
+  moveset: {fileID: 8860640862818627132}
 --- !u!1 &934936145821045732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,7 +1734,7 @@ MonoBehaviour:
   currentState: {fileID: 7345523048625562197}
   idleState: {fileID: 7345523048625562197}
   aerialState: {fileID: 4834194079233470166}
-  landingState: {fileID: 0}
+  landingState: {fileID: 8153404004253164234}
   characterData: {fileID: 11400000, guid: 67c43ef0b008f0643aeec4125b6dfa65, type: 2}
   centerPoint: {fileID: 277164974340308542}
   centerPivot: {fileID: 6866766408010574411}
@@ -2343,14 +2344,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundedWeakAttackFirstHit: {fileID: 1314404453917285961, guid: 590b8eda7a202f348b2d5b473bf1b2be, type: 3}
-  groundedWeakAttackSecondHit: {fileID: 0}
-  groundedWeakAttackLastHit: {fileID: 0}
   launcher: {fileID: 0}
-  groundedHeavyAttack: {fileID: 0}
-  aerialWeakAttackFirstHit: {fileID: 0}
-  aerialWeakAttackSecondHit: {fileID: 0}
-  aerialWeakAttackLastHit: {fileID: 0}
-  aerialHeavyAttack: {fileID: 0}
+  groundedHeavyAttack: {fileID: 1314404453917285961, guid: 0c09df4c41ac6dc44958bbb5c4424426, type: 3}
+  aerialWeakAttackFirstHit: {fileID: 1314404453917285961, guid: 3e3cfe12fc6170f4d8d7a21b350f7c17, type: 3}
+  aerialHeavyAttack: {fileID: 1314404453917285961, guid: f48977a4b1b614a469bb558382a15cec, type: 3}
+  aerialAttack: 0
   stateAction: {fileID: 816621813101551561}
 --- !u!1 &4924078639769180795
 GameObject:
@@ -3131,6 +3129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 3572355416432021228}
+  characterMoveset: {fileID: 8860640862818627132}
   characterAction: {fileID: 4392485436907664825}
 --- !u!114 &1230792954669712852
 MonoBehaviour:
@@ -3297,10 +3296,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRigibody: {fileID: 8325594827556253420}
   animator: {fileID: 5845402638145636779}
-  walkingSpeed: 5
-  movementSpeed: 15
-  runningSpeed: 30
-  airControl: 20
+  walkingSpeed: 3.5
+  movementSpeed: 11
+  runningSpeed: 15
+  airControl: 11
   airFriction: 0.9
   maxAerialSpeed: 10
   jumpForce: 15

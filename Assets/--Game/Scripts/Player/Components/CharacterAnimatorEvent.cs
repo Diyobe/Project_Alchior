@@ -9,6 +9,9 @@ public class CharacterAnimatorEvent : MonoBehaviour
 	CharacterMovement characterMovement;
 
 	[SerializeField]
+	CharacterMoveset characterMoveset;
+
+	[SerializeField]
 	CharacterAction characterAction;
 
 	//[SerializeField]
@@ -55,6 +58,12 @@ public class CharacterAnimatorEvent : MonoBehaviour
 	{
 		characterAction.EndAction();
 	}
+
+	public void EndActionAerial()
+    {
+		characterMoveset.aerialAttack = true;
+		characterAction.EndAction();
+    }
 
 	public void MovementCancelable()
     {

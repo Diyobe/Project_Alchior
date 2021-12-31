@@ -9,6 +9,10 @@ public class CharacterStateAerial : CharacterState
     [SerializeField]
     CharacterState landingState;
 
+    [Title("Parameter - Actions")]
+    [SerializeField]
+    CharacterMoveset moveset;
+
     public override void StartState(CharacterBase character, CharacterState oldState)
     {
         //character.Movement.animator.SetBool("IsGrounded", false);
@@ -19,6 +23,11 @@ public class CharacterStateAerial : CharacterState
     public override void UpdateState(CharacterBase character)
     {
         if (GameManager.Instance.gamePaused) return;
+
+        if (moveset.ActionAttackAerial(character))
+        {
+            return;
+        }
         character.Movement.AirControl(character.inputPlayer.GetAxis("MoveX"), character.inputPlayer.GetAxis("MoveZ"));
     }
 
@@ -28,6 +37,7 @@ public class CharacterStateAerial : CharacterState
         if (character.Rigidbody.IsGrounded() && character.canLand)
         {
             character.Movement.isJumping = false;
+            moveset.aerialAttack = false;
             character.SetState(landingState);
         }
         character.Movement.HandleGravity();

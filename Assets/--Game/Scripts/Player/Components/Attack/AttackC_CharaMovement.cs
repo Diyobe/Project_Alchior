@@ -27,22 +27,52 @@ public class AttackC_CharaMovement : AttackComponent
 
     //[ShowIf("keepMomentumX")]
     [SerializeField]
-    bool deccelerate = false;
+    bool deccelerateX = false;
 
-    [HorizontalGroup("Decceleration")]
-    [ShowIf("deccelerate")]
+    [HorizontalGroup("DeccelerationX")]
+    [ShowIf("deccelerateX")]
     [SerializeField]
     [HideLabel]
-    AnimationCurve deccelerationCurve;
+    AnimationCurve deccelerationCurveX;
 
-    [HorizontalGroup("Decceleration", LabelWidth = 120)]
-    [ShowIf("deccelerate")]
+    [HorizontalGroup("DeccelerationX", LabelWidth = 120)]
+    [ShowIf("deccelerateX")]
     [SuffixLabel("en frames")]
     [SerializeField]
-    float timeDecceleration = 10f;
+    float timeDeccelerationX = 10f;
+
+    //---------------------------------------------------------
+    [Title("Movement Z")]
+    [SerializeField]
+    bool keepMomentumZ = false;
 
 
+    [HideIf("keepMomentumZ")]
+    [HorizontalGroup("MomentumZ")]
+    [SerializeField]
+    bool setMomentumZ = false;
 
+    [HorizontalGroup("MomentumZ")]
+    [HideIf("keepMomentumZ")]
+    [SerializeField]
+    float momentumZ = 0f;
+
+
+    [SerializeField]
+    bool deccelerateZ = false;
+
+    [HorizontalGroup("DeccelerationZ")]
+    [ShowIf("deccelerateZ")]
+    [SerializeField]
+    [HideLabel]
+    AnimationCurve deccelerationCurveZ;
+
+    [HorizontalGroup("DeccelerationZ", LabelWidth = 120)]
+    [ShowIf("deccelerateZ")]
+    [SuffixLabel("en frames")]
+    [SerializeField]
+    float timeDeccelerationZ = 10f;
+    //--------------------------------------------------------
 
     [Title("Movement Y")]
     [SerializeField]
@@ -82,6 +112,7 @@ public class AttackC_CharaMovement : AttackComponent
 
     float timer = 0;
     float initialSpeedX = 0;
+    float initialSpeedZ = 0;
 
     bool groundCancelNextFrame = false;
 
@@ -93,6 +124,17 @@ public class AttackC_CharaMovement : AttackComponent
             user.Movement.SpeedX = 0;
             if(setMomentumX == true)
                 user.Movement.SpeedX = momentumX;
+
+            user.Movement.SpeedY = 0;
+        }
+
+        if (keepMomentumZ == false)
+        {
+            user.Movement.SpeedZ = 0;
+            if (setMomentumZ == true)
+                user.Movement.SpeedZ = momentumZ;
+
+            user.Movement.SpeedY = 0;
         }
 
         if (keepMomentumY == false)
@@ -100,7 +142,9 @@ public class AttackC_CharaMovement : AttackComponent
 
         timer = 0f;
         initialSpeedX = user.Movement.SpeedX;
-        timeDecceleration /= 60f;
+        initialSpeedZ = user.Movement.SpeedZ;
+        timeDeccelerationX /= 60f;
+        timeDeccelerationZ /= 60f;
 
     }
 
@@ -116,12 +160,20 @@ public class AttackC_CharaMovement : AttackComponent
                 user.Movement.ApplyGravityWithMultiplier(gravityMultiplier);
         }
 
-        if (deccelerate == true && timer < timeDecceleration)
+        if (deccelerateX == true && timer < timeDeccelerationX)
         {
             timer += Time.deltaTime;
-            user.Movement.SpeedX = initialSpeedX * deccelerationCurve.Evaluate(timer / timeDecceleration);
-            if (timer >= timeDecceleration)
+            user.Movement.SpeedX = initialSpeedX * deccelerationCurveX.Evaluate(timer / timeDeccelerationX);
+            if (timer >= timeDeccelerationX)
                 user.Movement.SpeedX = 0;
+        }
+
+        if (deccelerateZ == true && timer < timeDeccelerationZ)
+        {
+            timer += Time.deltaTime;
+            user.Movement.SpeedZ = initialSpeedZ * deccelerationCurveZ.Evaluate(timer / timeDeccelerationZ);
+            if (timer >= timeDeccelerationZ)
+                user.Movement.SpeedZ = 0;
         }
 
       /*  if (accelerate == true && timer < timeDecceleration)
@@ -155,7 +207,7 @@ public class AttackC_CharaMovement : AttackComponent
                 groundCancelNextFrame = true;
             }
         }
-
+        user.Movement.Move();
     }
 
 

@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingState: {fileID: 8153404004253164234}
+  moveset: {fileID: 8860640862818627132}
 --- !u!1 &934936145821045732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 15
   verticalSpeed: 10
-  characterController: {fileID: 0}
+  characterController: {fileID: 3640510885815018635}
 --- !u!114 &8642071422520740886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1763,7 +1764,7 @@ MonoBehaviour:
   currentState: {fileID: 7345523048625562197}
   idleState: {fileID: 7345523048625562197}
   aerialState: {fileID: 4834194079233470166}
-  landingState: {fileID: 0}
+  landingState: {fileID: 8153404004253164234}
   characterData: {fileID: 11400000, guid: 351bb4883c494d84f9fdb42cb0e68e2f, type: 2}
   centerPoint: {fileID: 3259586578162124718}
   centerPivot: {fileID: 6866766408010574411}
@@ -1777,6 +1778,7 @@ MonoBehaviour:
   motionSpeed: 1
   actions: {fileID: 1174070137414042928}
   canLand: 1
+  SmearsControllerSword: {fileID: 0}
   playerID: 10
 --- !u!1 &3952135926651406800
 GameObject:
@@ -2269,14 +2271,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundedWeakAttackFirstHit: {fileID: 0}
-  groundedWeakAttackSecondHit: {fileID: 0}
-  groundedWeakAttackLastHit: {fileID: 0}
   launcher: {fileID: 0}
   groundedHeavyAttack: {fileID: 0}
   aerialWeakAttackFirstHit: {fileID: 0}
-  aerialWeakAttackSecondHit: {fileID: 0}
-  aerialWeakAttackLastHit: {fileID: 0}
   aerialHeavyAttack: {fileID: 0}
+  aerialAttack: 0
   stateAction: {fileID: 816621813101551561}
 --- !u!1 &4924078639769180795
 GameObject:
@@ -3027,6 +3026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 3572355416432021228}
+  characterMoveset: {fileID: 0}
   characterAction: {fileID: 4392485436907664825}
 --- !u!114 &2996532125935362897
 MonoBehaviour:
