@@ -6,23 +6,16 @@ public class CharacterStateActing : CharacterState
 {
     [Header("Parameter - Actions")]
     [SerializeField] CharacterMoveset characterMoveset;
-    bool isAerial = false;
 
     public override void StartState(CharacterBase character, CharacterState oldState)
     {
-        if (oldState is CharacterStateAerial)
-        {
-            isAerial = true;
-        }
-        else if (oldState is CharacterStateIdle)
-        {
-            isAerial = false;
-        }
+        character.Movement.ResetAnimator();
     }
 
     public override void UpdateState(CharacterBase character)
     {
-        if (isAerial)
+        //if (isAerial)
+        if (!character.Rigidbody.IsGrounded())
         {
             if (characterMoveset.ActionAttackAerial(character)) return;
         }

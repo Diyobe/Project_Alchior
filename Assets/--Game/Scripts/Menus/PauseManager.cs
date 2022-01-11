@@ -175,8 +175,8 @@ public class PauseManager : MonoBehaviour
     {
         gameUI.SetActive(true);
         pauseCanvas.SetActive(false);
-        Time.timeScale = 1f;
         GameManager.Instance.gamePaused = false;
+        Time.timeScale = 1f;
     }
 
     void OpenPause()

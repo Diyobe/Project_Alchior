@@ -231,7 +231,7 @@ MonoBehaviour:
   timeDeccelerationZ: 10
   keepMomentumY: 0
   applyGravity: 1
-  gravityMultiplier: 1
+  gravityMultiplier: 0.1
   applyGravityDescend: 0
   gravityMultiplierDescend: 0.1
   canAirControl: 0

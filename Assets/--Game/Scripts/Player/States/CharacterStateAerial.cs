@@ -16,6 +16,9 @@ public class CharacterStateAerial : CharacterState
     public override void StartState(CharacterBase character, CharacterState oldState)
     {
         //character.Movement.animator.SetBool("IsGrounded", false);
+        character.Movement.ResetAnimator();
+
+        character.Movement.animator.ResetTrigger("Fall");
         character.Movement.animator.SetTrigger("Fall");
         StartCoroutine(StartCanLand(character));
     }
@@ -26,7 +29,7 @@ public class CharacterStateAerial : CharacterState
 
         if (moveset.ActionAttackAerial(character))
         {
-            return;
+            //return;
         }
         character.Movement.AirControl(character.inputPlayer.GetAxis("MoveX"), character.inputPlayer.GetAxis("MoveZ"));
     }
@@ -34,6 +37,7 @@ public class CharacterStateAerial : CharacterState
     public override void LateUpdateState(CharacterBase character)
     {
         if (GameManager.Instance.gamePaused) return;
+
         if (character.Rigidbody.IsGrounded() && character.canLand)
         {
             character.Movement.isJumping = false;

@@ -7,6 +7,7 @@ public class CharacterStateKnockback : CharacterState
 
 	public override void StartState(CharacterBase character, CharacterState oldState)
 	{
+		character.Movement.ResetAnimator();
 		character.Movement.animator.SetTrigger("Knockback");
 	}
 

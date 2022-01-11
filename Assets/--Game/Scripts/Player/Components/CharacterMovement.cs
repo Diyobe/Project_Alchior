@@ -238,4 +238,16 @@ public class CharacterMovement : MonoBehaviour
                 return true;
         return false;
     }
+
+    public void ResetAnimator()
+    {
+        animator.SetBool("Run", false);
+        animator.ResetTrigger("DoubleJump");
+        animator.ResetTrigger("Crouch");
+        animator.ResetTrigger("Landing");
+        animator.ResetTrigger("Jumping");
+        animator.ResetTrigger("Idle");
+        animator.ResetTrigger("Knockback");
+        animator.ResetTrigger("Fall");
+    }
 }

@@ -231,7 +231,7 @@ MonoBehaviour:
   timeDeccelerationZ: 10
   keepMomentumY: 0
   applyGravity: 1
-  gravityMultiplier: 1
+  gravityMultiplier: 0.1
   applyGravityDescend: 0
   gravityMultiplierDescend: 0.1
   canAirControl: 0
@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitStopDuration: 0.2
+  launchDistance: 1
   knockbackType: 0
   hitStopUser: 1
   hitStopTarget: 0

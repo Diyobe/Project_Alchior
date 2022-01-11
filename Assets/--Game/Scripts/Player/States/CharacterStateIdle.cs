@@ -24,6 +24,7 @@ public class CharacterStateIdle : CharacterState
 
 	public override void StartState(CharacterBase character, CharacterState oldState)
 	{
+		character.Movement.ResetAnimator();
 		character.Movement.animator.SetTrigger("Idle");
 		//character.Movement.animator.SetBool("IsGrounded", true);
 	}
@@ -34,39 +35,40 @@ public class CharacterStateIdle : CharacterState
 		character.Movement.HandleGravity();
 		character.Movement.HandleMovement(character.inputPlayer.GetAxis("MoveX"), character.inputPlayer.GetAxis("MoveZ"));
 
-		Vector3 newVector;
-		newVector.x = character.Movement.SpeedX;
-		newVector.y = 0;
-		newVector.z = character.Movement.SpeedZ;
 
-		float currentSpeed = Mathf.Clamp(newVector.magnitude * 2, 0, character.Movement.runningSpeed) / character.Movement.runningSpeed;
-		character.Movement.animator.SetFloat("IdleMovement", currentSpeed);
 
-        if (character.inputPlayer.GetButtonDown("ItemInteract"))
-        {
-			character.actions.Interact();
-        }
+        
 
         if (character.inputPlayer.GetButtonDown("Jump"))
         {
-			character.canLand = false;
-			character.Movement.Jump();
 			character.SetState(jumpStartState);
+			character.Movement.Jump();
+			character.canLand = false;
 		}
 		else if (moveset.ActionAttackGrounded(character))
 		{
 			return;
 		}
-
-		if (!character.Rigidbody.IsGrounded())
+		else if (character.inputPlayer.GetButtonDown("ItemInteract") && !GameManager.Instance.gamePaused)
 		{
-			character.SetState(aerialState);
+			character.actions.Interact();
 		}
+
+
 	}
 	
 	public override void LateUpdateState(CharacterBase character)
 	{
-
+		Vector3 newVector;
+		newVector.x = character.Movement.SpeedX;
+		newVector.y = 0;
+		newVector.z = character.Movement.SpeedZ;
+		float currentSpeed = Mathf.Clamp(newVector.magnitude * 2, 0, character.Movement.runningSpeed) / character.Movement.runningSpeed;
+		character.Movement.animator.SetFloat("IdleMovement", currentSpeed);
+		if (!character.Rigidbody.IsGrounded())
+		{
+			character.SetState(aerialState);
+		}
 	}
 
 	public override void EndState(CharacterBase character, CharacterState newState)

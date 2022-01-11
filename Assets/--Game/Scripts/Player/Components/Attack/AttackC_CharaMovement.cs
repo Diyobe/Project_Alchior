@@ -195,7 +195,7 @@ public class AttackC_CharaMovement : AttackComponent
             user.ResetToLand();
         }
 
-        if (groundCancel == true && user.Rigidbody.IsGrounded())
+        if (groundCancel == true && user.Rigidbody.IsGrounded() && user.canLand)
         {
             if (groundEndLag != null)
             {

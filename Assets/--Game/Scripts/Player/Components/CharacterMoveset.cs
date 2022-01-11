@@ -34,7 +34,7 @@ public class CharacterMoveset : MonoBehaviour
         //Check des inputs pour savoir si on lance une attaque ou non
         if (character.inputPlayer.GetButtonDown("WeakAttack"))
             return ActionAttack(character, groundedWeakAttackFirstHit);
-
+        else
         if (character.inputPlayer.GetButtonDown("StrongAttack"))
             return ActionAttack(character, groundedHeavyAttack);
         return false;
